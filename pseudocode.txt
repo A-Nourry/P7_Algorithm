@@ -1,0 +1,47 @@
+Algorithme dynamique(cout_maximum, cout_des_actions, benefice_des_actions, actions):
+	n ← nombre d’inputs
+	tableau ← pour x allant de [pour x  allant de 0 à la longueur de cout_maximum + 1] à n + 1
+
+    Pour i allant de 0 à n + 1:
+        Pour j allant de 0 à cout_maximum + 1:
+
+        Si i == 0 ou j == 0:
+            tableau[i][j] = 0
+
+        ou si cout_des_actions[i - 1] <= j:
+            tableau[i][j] = maximum de (
+                benefice_des_actions[i - 1] + tableau[i - 1][j - cout_des_actions[i - 1]],
+                tableau[i - 1][j],
+                )
+        
+        sinon:
+            tableau[i][j] = tableau[i - 1][j]
+
+        Fin Si
+    Fin Pour
+
+    resultat ← tableau[-1][-1]
+    total_des_couts ← nouvelle liste vierge
+
+    Affiche("Bénéfice sur 2 ans : ", resultat / 100)
+
+    Pour i partant de n à 0 avec un pas de -1:
+
+        Si résultat <= 0:
+            fin pour
+
+        Si resultat == tableau[i - 1][cout_maximum]:
+            on continue
+
+        Sinon:
+            Affiche(action[i - 1])
+            total_des_couts → ajoute(cout_des_actions[i - 1])
+            resultat = resultat - benefice_des_actions[i - 1]
+            cout_maximum = cout_maximum - cout_des_actions[i - 1]
+        Fin Si
+    Fin Pour
+
+    Affiche("Coût total : ", somme de totale de (total_des_couts) / 100)
+
+
+

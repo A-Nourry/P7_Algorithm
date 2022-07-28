@@ -4,7 +4,8 @@ import itertools
 
 """import csv file"""
 file = open("data.csv")
-csvreader = csv.reader(file, quoting=csv.QUOTE_NONNUMERIC)
+csvreader = csv.reader(file)
+next(csvreader, None)
 
 MAX_EXPENSE = 500
 rows = []
@@ -17,6 +18,9 @@ for row in csvreader:
     rows.append(row)
 
 for profit in rows:
+    print(profit)
+    profit[1] = int(profit[1])
+    profit[2] = int(profit[2])
     profit[2] = profit[1] * profit[2] / 100
 
 """generating every possible stocks combinations"""
