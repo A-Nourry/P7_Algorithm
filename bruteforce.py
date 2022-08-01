@@ -18,7 +18,6 @@ for row in csvreader:
     rows.append(row)
 
 for profit in rows:
-    print(profit)
     profit[1] = int(profit[1])
     profit[2] = int(profit[2])
     profit[2] = profit[1] * profit[2] / 100

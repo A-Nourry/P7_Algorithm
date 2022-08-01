@@ -1,7 +1,7 @@
 import csv
 
 
-PRECISION_VALUE = 100  # adjust the precision of the result
+PRECISION_VALUE = 10  # adjust the precision of the result
 
 
 def get_best_profit(max_expense=int, cost=int, profit=int, names=str):
@@ -30,12 +30,12 @@ def get_best_profit(max_expense=int, cost=int, profit=int, names=str):
                 table[i][j] = table[i - 1][j]
 
     result = table[-1][-1]
-    total_cost = []
 
     print("Bénéfice sur 2 ans : ", result / 100)
     print("liste des actions : ")
 
     # Print all stock names
+    total_cost = []
     for i in range(n, 0, -1):
         if result <= 0:
             break
@@ -74,7 +74,9 @@ if __name__ == "__main__":
         if int(float(rows[i][1])) > 0 and int(float(rows[i][2]) > 0):
             stock_name.append(rows[i][0])
             stock_costs.append(float(rows[i][1]))
-            stock_profits.append(round(float(rows[i][2]) * float(rows[i][1])) / PRECISION_VALUE)
+            stock_profits.append(
+                round(float(rows[i][2]) * float(rows[i][1])) / PRECISION_VALUE
+            )
 
     for cost, i in zip(stock_costs, range(len(stock_costs))):
         stock_costs[i] = stock_costs[i] * PRECISION_VALUE

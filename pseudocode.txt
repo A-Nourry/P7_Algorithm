@@ -21,10 +21,9 @@ Algorithme dynamique(cout_maximum, cout_des_actions, benefice_des_actions, actio
     Fin Pour
 
     resultat ← tableau[-1][-1]
-    total_des_couts ← nouvelle liste vierge
-
     Affiche("Bénéfice sur 2 ans : ", resultat / 100)
 
+    total_des_couts ← nouvelle liste vierge
     Pour i partant de n à 0 avec un pas de -1:
 
         Si résultat <= 0:
